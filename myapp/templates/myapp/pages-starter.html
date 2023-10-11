@@ -1,0 +1,203 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+
+{% block pagetitle %}
+    <div class="dropdown topbar-head-dropdown ms-1 header-item text-center">
+        <h3 class="d-none d-md-block mb-0" style="font-family: Poppins">Gérer ma carte et mes dépenses</h3>
+        <h3 class="d-md-none text-center mb-0" style="font-family: Poppins">Gérer ma carte</h3>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-height-100 border-0">
+                                <div class="mb-3">
+                                    <h5 style="font-family: Poppins">Ma carte</h5>
+                                </div>
+                                <div class="">
+                                    <div class="" style="max-width: 350px">
+                                        <div class="text-bg-info bg-gradient p-4 rounded-4 mb-3">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <img src="{% static 'account/newcard/images/PRIPEO-(png).png' %}" alt="" height="35">
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <i class="bx bxl-visa display-2 mt-n3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="card-number fs-20" id="card-num-elem">
+                                                {{ card.masked_card_number }}
+                                            </div>
+
+                                            <div class="row mt-4">
+                                                <div class="col-6 p-0">
+                                                    <div>
+                                                        <div class="text-white-50">Card Holder</div>
+                                                        <div id="card-holder-elem" class="fw-medium fs-14">{{ card.name }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 p-0">
+                                                    <div class="expiry">
+                                                        <div class="text-white-50">Expires</div>
+                                                        <div class="fw-medium fs-14">
+                                                            <span id="expiry-year-elem">{{ card.expiry_date }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 p-0">
+                                                    <div>
+                                                        <div class="text-white-50">CVC</div>
+                                                        <div id="cvc-elem" class="fw-medium fs-14">***</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end card div elem -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end card -->
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="card card-height-100 border-0">
+                                <div class="mb-3">
+                                    <h5 style="font-family: Poppins">Mon solde</h5>
+                                </div>
+                                <div class="card rounded-4" >
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm flex-shrink-0">
+                                            <img src="{% static 'myapp/assets/images/icons/Group 494.svg' %}" alt="" height="50">
+
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <p class="text-muted mb-1">Sur ma carte</p>
+
+                                            <h3 class="fs-4 mb-1" >{{ card_account }}</h3>
+
+                                        </div>
+
+                                    </div>
+                                </div><!-- end card body -->
+                            </div>
+
+
+                            </div>
+                            <!-- end card -->
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card card-height-100 border-0">
+                                <div class="mb-3">
+                                    <h5 style="font-family: Poppins">Réglages de carte</h5>
+                                </div>
+
+                                {% if card.status == "Active" %}
+                                <div class="card rounded-4">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <img src="{% static 'myapp/assets/images/icons/Group 165 (2).svg' %}" alt="" height="50">
+                                            </div>
+                                            <a href="{% url 'block-card' %}">
+                                                <div class="flex-grow-1 ms-3">
+                                                <p class=" mb-1 text-dark" >Bloquer ma carte</p>
+                                                <p class="text-muted mb-1">Bloquez instantanément votre carte</p>
+                                                </div>
+                                            </a>
+
+
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div>
+                                {% else %}
+                                <div class="card rounded-4">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <img src="{% static 'myapp/assets/images/icons/Group 165 (1).svg' %}" alt="" height="50">
+                                            </div>
+                                            <a href="{% url 'unblock-card' %}">
+                                                <div class="flex-grow-1 ms-3">
+                                                <p class=" mb-1 text-dark">Débloquer ma carte</p>
+                                                <p class="text-muted mb-1">Débloquez instantanément votre carte</p>
+                                                </div>
+                                            </a>
+
+
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div>
+                                {% endif %}
+
+
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card border-0">
+                                <div class="card-header align-items-center d-flex border-0 p-0 mb-3">
+                                    <h4 class="card-title mb-0 flex-grow-1">Transactions récentes</h4>
+
+
+                                    <a class="nav-link menu-link" href="{% url 'hist' %}">
+                                        <span data-key="t-widgets" class="text-primary">Télécharger mon historique</span>
+                                    </a>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+
+                                        <div class="table-responsive table-card rounded-4">
+                                            <table class="table align-middle table-nowrap  mb-0">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col" class="text-secondary">Organisme</th>
+                                                        <th scope="col" class="text-secondary">Description</th>
+                                                        <th scope="col" class="text-secondary">Date</th>
+                                                        <th scope="col" class="text-secondary">Montant</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for key, values in card_history.items %}
+                                                        <tr>
+                                                            <td>{{ values.merchant_name }}</td>
+                                                            <td>{{ values.group }}</td>
+                                                            <td>{{ values.purchase_date }}</td>
+                                                            {% if values.transaction_amount < 0 %}
+                                                                <td class="text-danger">{{ values.transaction_amount }} {{ values.transaction_currency_code }}</td>
+                                                            {% else %}
+                                                                <td class="text-success">{{ values.transaction_amount }} {{ values.transaction_currency_code }}</td>
+                                                            {% endif %}
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+                    </div>
+
+
+
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+{% endblock %}

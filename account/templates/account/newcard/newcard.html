@@ -1,0 +1,277 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demande de carte Pripeo">
+    <meta name="author" content="Le Studio Pigalle">
+    <title>Pripeo | Demande de carte Pripeo</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{% static 'myapp/assets/images/brands/favicon-pripeo.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{% static 'account/newcard/images/PRIPEO-(png).png' %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static 'account/newcard/images/PRIPEO-(png).png' %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{% static 'account/newcard/images/PRIPEO-(png).png' %}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{% static 'account/newcard/images/PRIPEO-(png).png' %}">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{% static 'account/newcard/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'account/newcard/css/vendors.css' %}" rel="stylesheet">
+    <link href="{% static 'account/newcard/css/style.css' %}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'account/newcard/css/custom.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Preload -->
+
+	<div class="container-fluid">
+	    <div class="row row-height">
+	        <div class="col-lg-6 background-image p-0" style="background-image: url({% static 'account/newcard/images/background_newcard.JPG' %}" >
+	            <div class="content-left-wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+	                <a href="#0" id="logo"><img src="{% static 'account/newcard/images/PRIPEO-(png).png' %}" alt="" width="150" height="50"></a>
+	                <div id="social">
+	                    <ul>
+	                        <li><a href="#0"><i class="social_facebook"></i></a></li>
+	                        <li><a href="#0"><i class="social_twitter"></i></a></li>
+	                        <li><a href="#0"><i class="social_instagram"></i></a></li>
+	                    </ul>
+	                </div>
+	                <!-- /social -->
+	                <div class="text-start">
+	                	<small>PRIPEO</small>
+	                    <h1>Demandez votre carte prépayée physique ou virtuelle PRIPEO.</h1>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="col-lg-6 d-flex flex-column content-right" id="right">
+	            <div class="container my-auto py-5">
+	                <div class="row">
+	                    <div class="col-lg-9 col-xl-7 mx-auto">
+
+                            <form class="input_style_2" method="post" enctype="multipart/form-data" >
+								{% csrf_token %}
+
+                                <div class="form-group">
+									<h6>Choisissez votre carte :</h6>
+									{{ registration_form.type_of_card|add_class:"form-control" }}
+
+                                    {% for error in registration_form.type_of_card.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+									<h6>Civilité :</h6>
+									{{ registration_form.civility|add_class:"form-control" }}
+
+                                    {% for error in registration_form.civility.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Prénom*</label>
+
+                                    {{ registration_form.first_name|add_class:"form-control" }}
+
+                                    {% for error in registration_form.first_name.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Nom*</label>
+
+                                    {{ registration_form.last_name|add_class:"form-control" }}
+
+                                    {% for error in registration_form.last_name.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+								<div class="form-group">
+	                                <label for="email_address">Adresse email*</label>
+
+                                    {{ registration_form.email|add_class:"form-control" }}
+
+                                    {% for error in registration_form.email.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+								<div class="form-group">
+                                    <h6 class="mb-3">Créez votre mot de passe Pripeo :</h6>
+	                                <label for="password">Saisissez votre mot de passe</label>
+									{{ registration_form.password1|add_class:"form-control" }}
+
+                                    {% for error in registration_form.password2.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+								<div class="form-group">
+									<label for="confirm_password">Confirmez votre mot de passe :</label>
+									{{ registration_form.password2|add_class:"form-control" }}
+								</div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Société</label>
+
+                                    {{ registration_form.societe|add_class:"form-control" }}
+
+                                    {% for error in registration_form.societe.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Adresse 1*</label>
+
+                                    {{ registration_form.adresse1|add_class:"form-control" }}
+
+                                    {% for error in registration_form.adresse1.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Adresse 2</label>
+
+                                    {{ registration_form.adresse2|add_class:"form-control" }}
+
+                                    {% for error in registration_form.adresse2.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Pays*</label>
+
+                                    {{ registration_form.pays|add_class:"form-control" }}
+
+                                    {% for error in registration_form.pays.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+
+                                <div class="form-group">
+									<label for="email_address">Activité*</label>
+									{{ registration_form.activitee|add_class:"form-control" }}
+
+                                    {% for error in registration_form.activitee.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+									<label for="email_address">Langue*</label>
+									{{ registration_form.langage|add_class:"form-control" }}
+
+                                    {% for error in registration_form.langage.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">Facebook</label>
+                                    {{ registration_form.facebook|add_class:"form-control" }}
+                                </div>
+
+                                <div class="form-group">
+	                                <label for="email_address">LinkedIn</label>
+                                    {{ registration_form.linkedin|add_class:"form-control" }}
+                                </div>
+
+                                <div class="form-group mb-4">
+								    <h6 class="mb-3">Pièce d’identité (CNI ou Passeport)*<a href="#0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<strong>Formats acceptés:<br></strong>jpg,jpeg,png,pdf. Taille maximale du fichier : 10 Mo." class="tooltip-1"><i class="icon_question_alt"></i></a></h6>
+								    <div class="fileupload">
+								        {{ registration_form.cni_image|add_class:"form-control" }}
+								    </div>
+                                    {% for error in registration_form.cni_image.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+								</div>
+
+                                <div class="form-group mb-4">
+								    <h6>Justificatif de domicile (Facture de la JIRAMA ou Certificat de résidence)*<a href="#0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<strong>Formats acceptés:<br></strong>jpg,jpeg,png,pdf. Taille maximale du fichier : 10 Mo." class="tooltip-1"><i class="icon_question_alt"></i></a></h6>
+								    <div class="fileupload">
+								        {{ registration_form.justif_dom|add_class:"form-control" }}
+								    </div>
+                                    {% for error in registration_form.justif_dom.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+								</div>
+
+                                <div class="form-group mb-4">
+								    <h6>Un selfie de vous en train de tenir votre pièce d’identité*<a href="#0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<strong>Formats acceptés:<br></strong>jpg,jpeg,png,pdf. Taille maximale du fichier : 10 Mo." class="tooltip-1"><i class="icon_question_alt"></i></a></h6>
+								    <div class="fileupload">
+								        {{ registration_form.selfie|add_class:"form-control" }}
+								    </div>
+                                    {% for error in registration_form.selfie.errors %}
+                                        <p style="color: red";>{{ error }}</p>
+                                    {% endfor %}
+								</div>
+
+                                <div class="form-group terms mb-4">
+								    <label class="container_check">J'accepte les <a href="#" data-bs-toggle="modal" data-bs-target="#terms-txt">Conditions Générales d'Utilisation</a>.
+								        <input type="checkbox" name="agree" id="agree" required>
+								        <span class="checkmark"></span>
+								    </label>
+								</div>
+
+	                            <button type="submit" class="btn_1 full-width">Demander ma carte</button>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+				<div class="container pb-3 copy">© PRIPEO - <a href="https://pigallestud.io" target="_blank">Made by Le Studio Pigalle</a>.</div>
+	        </div>
+	    </div>
+	    <!-- /row -->
+	</div>
+	<!-- /container -->
+
+	<!-- Modal terms -->
+	<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_1" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- COMMON SCRIPTS -->
+    <script src="{% static 'account/newcard/js/common_scripts.js' %}"></script>
+	<script src="{% static 'account/newcard/js/common_func.js' %}"></script>
+
+
+
+</body>
+</html>
