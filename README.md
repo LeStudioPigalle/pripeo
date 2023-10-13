@@ -2,13 +2,13 @@
 
 [![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://img.shields.io/badge/version-1.1.1-blue.svg)
 
-Pripeo est une plateforme qui permet de commander une carte virtuel (prépayé) ou physique. 
+Pripeo est une plateforme qui permet de commander une carte virtuel ou physique. 
 
 ## Librairies Utilisées
 
 - [Django](https://docs.djangoproject.com/en/4.2): Un framework web Python puissant pour assurer le site web.
 - [gunicorn](https://docs.gunicorn.org/en/stable/index.html): Librairie pour le déploiement d'applications web Python en production (serveur HTTP WSGI).
-- [request](https://pypi.org/project/requests/): Librairie pour les requêtes 
+- [request](https://pypi.org/project/requests/): Librairie pour les requêtes HTTTP
 
 ## Service externe 
 
@@ -31,22 +31,14 @@ source venv/bin/activate  # Sous Windows, utilisez `venv\Scripts\activate`
 pip install -r requirements.txt
 ```
 
-3. Configurez les variables d'environnement :
-
-Créez un fichier .env à la racine du projet avec les configurations suivante :
-
-```sh
-API_KEY=<API_KEY>
-```
-
-4. Appliquez les migrations :
+3. Appliquez les migrations :
 
 ```sh
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-5. Lancez le serveur de développement :
+4. Lancez le serveur de développement :
 
 ```sh
 python manage.py runserver
