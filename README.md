@@ -8,7 +8,7 @@ Pripeo est une plateforme qui permet de commander une carte virtuel (prépayé) 
 
 - [Django](https://docs.djangoproject.com/en/4.2): Un framework web Python puissant pour assurer le site web.
 - [gunicorn](https://docs.gunicorn.org/en/stable/index.html): Librairie pour le déploiement d'applications web Python en production (serveur HTTP WSGI).
-- [request](https://pypi.org/project/requests/): Librairie pour les requêtes 
+- [request](https://pypi.org/project/requests/): Librairie pour les requêtes HTTTP
 
 ## Service externe 
 
