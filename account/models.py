@@ -68,6 +68,7 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=50,blank=True)
     last_name = models.CharField(max_length=50,blank=False)
+    phone = models.CharField(max_length=20,blank=False,null=False)
     societe = models.CharField(max_length=50,blank=True)
     adresse1 = models.CharField(max_length=100,blank=False)
     adresse2 = models.CharField(max_length=100,blank=True)
@@ -75,7 +76,7 @@ class Account(AbstractBaseUser):
     facebook = models.CharField(max_length=200,blank=True)
     linkedin = models.CharField(max_length=200,blank=True)
     cni_image = models.FileField(upload_to='account/files/verification',blank=False)
-    justif_dom = models.FileField(upload_to='account/files/verification',blank=False)
+    justif_dom = models.FileField(upload_to='account/files/verification',blank=True,null=True)
     selfie = models.FileField(upload_to='account/files/verification',blank=False)
     is_verified = models.BooleanField(default=False)
 

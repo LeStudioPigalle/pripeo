@@ -249,23 +249,33 @@ def createCard(data):
 
     url = "https://api-frontend.wallester.com/v1/cards"
 
+    print(data)
+
     querystring = {
-        "3d_secure_settings": { # * format data.mobile or data.3d_secure_settings
-            "mobile": data.mobile, # * format : +33606060606
-            "password": data.password # * Password. Masked value returned if password is set. (8 - 36 string)
+        "account_id": data["account_id"],
+        "delivery_address": {  # * format data.address1 or data.delivery_address
+            "address1": data["delivery_address_address1"],
+            "city": data["delivery_address_city"],
+            "company_name": data["delivery_address_company_name"],
+            "country_code": 'FRA',  # * ISO 3166-1 alpha-3
+            "dispatch_method": "DHLGlobalMail",
+            "first_name": data["delivery_address_first_name"], #Prenom
+            "last_name": data["delivery_address_last_name"],
+            "phone": data["delivery_address_phone"],
+            "postal_code": data["delivery_address_postal_code"]
         },
-        "delivery_address": { # * format data.address1 or data.delivery_address
-            "address1": data.address1,
-            "address2": data.address2,
-            "city": data.city,
-            "country_code": data.country_code, # * ISO 3166-1 alpha-3
-            "first_name": data.firstname,
-            "last_name": data.lastname,
-            "postal_code": data.postal_code
-        },
-        "name": data.cardName,
+        "embossing_company_name": "PRIPEO",
+        "embossing_name": data["embossing_name_firstname"] +" "+ data["embossing_name_lastname"] ,  # * à voir ensemble mon bébé d'amour à la créme
         "type": "ChipAndPin"
     }
+
+    if data["secure_mobile"] and data["secure_password"]:
+        querystring["3d_secure_settings"]= {  # * format data.mobile or data.3d_secure_settings
+            "mobile": data["secure_mobile"],  # * format : +33606060606
+            "password": data["secure_password"]  # * Password. Masked value returned if password is set. (8 - 36 string)
+        }
+
+
 
     headers = {
         "Authorization": f"Bearer {token}"
@@ -274,5 +284,7 @@ def createCard(data):
     response = requests.request("GET", url, headers=headers, params=querystring)
 
     json = response.json()
+
+    print(json)
 
     return json
