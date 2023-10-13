@@ -8,14 +8,11 @@ def SendMailNewCard(informations):
     mail = EmailMessage("Nouveau Client", message,f'"Support Pripeo" <{settings.EMAIL_HOST_USER}>', ['kaivsantatr@yahoo.fr'])
 
     carte_cni = str(informations['cni_image'])
-    justif_dom = str(informations['justif_dom'])
     photo_selfie = str(informations['selfie'])
 
     mail.attach_file(carte_cni)
-    mail.attach_file(justif_dom)
     mail.attach_file(photo_selfie)
 
     mail.send()
 
 
-#
