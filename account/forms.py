@@ -9,7 +9,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = Account
-        fields = ("email","password1","type_of_card","civility","first_name","last_name","societe","adresse1","adresse2","pays","activitee","langage","linkedin","facebook","cni_image","justif_dom","selfie")
+        fields = ("email","password1","type_of_card","civility","first_name","last_name","phone","societe","adresse1","adresse2","pays","activitee","langage","linkedin","facebook","cni_image","selfie")
 
     def clean_email(self):
         data_email = self.cleaned_data.get("email")
@@ -81,3 +81,22 @@ class PasswordUpdateForm(PasswordChangeForm):
 
 
 
+
+class NewCardFormAdmin(forms.Form):
+    #3d_secure_settings
+    secure_mobile = forms.CharField(max_length=100,required=False,widget=forms.TextInput(attrs={'class':'form-control'}),label='Numéro de téléphone :',help_text="Format : +33606060606")
+    secure_password = forms.CharField(max_length=100,required=False,widget=forms.PasswordInput(attrs={'class':'form-control'}),label='Mot de passe :')
+    #account_id
+    account_id = forms.CharField(max_length=100,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='ID du compte Wallester :')
+    #delivery_address
+    delivery_address_address1 = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Adresse :')
+    delivery_address_city = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Ville :')
+    delivery_address_company_name = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Nom de la société :')
+    delivery_address_first_name = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Prénom :')
+    delivery_address_last_name = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Nom :')
+    delivery_address_phone = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Numéro de téléphone :',help_text="Format : +33606060606")
+    delivery_address_postal_code = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Code postal :')
+
+    #embossing_name
+    embossing_name_firstname = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Prénom :')
+    embossing_name_lastname = forms.CharField(max_length=150,required=True,widget=forms.TextInput(attrs={'class':'form-control'}),label='Nom :')
