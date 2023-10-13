@@ -31,22 +31,14 @@ source venv/bin/activate  # Sous Windows, utilisez `venv\Scripts\activate`
 pip install -r requirements.txt
 ```
 
-3. Configurez les variables d'environnement :
-
-Créez un fichier .env à la racine du projet avec les configurations suivante :
-
-```sh
-API_KEY=<API_KEY>
-```
-
-4. Appliquez les migrations :
+3. Appliquez les migrations :
 
 ```sh
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-5. Lancez le serveur de développement :
+4. Lancez le serveur de développement :
 
 ```sh
 python manage.py runserver
