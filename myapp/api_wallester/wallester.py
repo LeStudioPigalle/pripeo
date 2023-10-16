@@ -67,7 +67,7 @@ def getCardsByIdAccount(account_id):
 
     try:
         if len(cards['cards']) == 0:
-            print("Pas de cartes pour ce compte")
+            #print("Pas de cartes pour ce compte")
             # todo blocage front pas de cartes
     except:
         return
@@ -101,7 +101,7 @@ def getCardsByIdAccount(account_id):
     data_card['expiry_date'] = datetime.strptime(data_card['expiry_date'], '%Y-%m-%d %H:%M:%S')
     data_card['expiry_date'] = str(data_card['expiry_date'].month) + "/" + str(data_card['expiry_date'].year)[2:]
 
-    print(data_card)
+    #print(data_card)
 
     return data_card
 
@@ -168,8 +168,8 @@ def downloadStatementById(account_id, from_date, to_date, statement_file_type):
     fields = ListeTransactions[0]
     del ListeTransactions[0]
 
-    for elem in ListeTransactions:
-        print(elem)
+    """for elem in ListeTransactions:
+        print(elem)"""
 
 
     with open('myapp/statements_extracts/'+nom_fichier+".csv", 'w') as f:
@@ -201,7 +201,7 @@ def getCardHistory(card_id, nb_record):
 
     try:
         if len(cards_response['transactions']) == 0:
-            print("Pas d'historique pour ce compte")
+            #print("Pas d'historique pour ce compte")
             # todo blocage front pas de cartes
     except:
         return
@@ -251,7 +251,7 @@ def createCard(data):
 
     url = "https://api-frontend.wallester.com/v1/cards"
 
-    print(data)
+    #print(data)
 
     querystring = {
         "account_id": data["account_id"],
@@ -278,7 +278,7 @@ def createCard(data):
             "password": data["secure_password"]  # * Password. Masked value returned if password is set. (8 - 36 string)
         }
 
-    print(querystring)
+    #print(querystring)
 
     headers = {
         "Authorization": f"Bearer {token}",
@@ -286,10 +286,10 @@ def createCard(data):
 
     response = requests.request("POST", url, headers=headers, json=querystring)
 
-    print(response)
+    #print(response)
 
     json = response.json()
 
-    print(json)
+    #print(json)
 
     return json
