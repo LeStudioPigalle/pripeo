@@ -199,12 +199,12 @@ def getCardHistory(card_id, nb_record):
     #print("hello")
     #print(cards_response)
 
-    try:
+    """try:
         if len(cards_response['transactions']) == 0:
             #print("Pas d'historique pour ce compte")
             # todo blocage front pas de cartes
     except:
-        return
+        return"""
 
     dictReturn = {}
     index = 0
