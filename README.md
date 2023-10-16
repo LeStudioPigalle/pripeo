@@ -1,6 +1,6 @@
 # Pripeo
 
-[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://img.shields.io/badge/version-1.1.1-blue.svg)
+[![Version](https://img.shields.io/badge/version-1.1.2-blue.svg)](https://img.shields.io/badge/version-1.1.2-blue.svg)
 
 Pripeo est une plateforme qui permet de commander une carte virtuel ou physique. 
 

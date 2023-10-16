@@ -65,12 +65,12 @@ def getCardsByIdAccount(account_id):
 
     cards = response.json()
 
-    try:
+    """try:
         if len(cards['cards']) == 0:
             #print("Pas de cartes pour ce compte")
             # todo blocage front pas de cartes
     except:
-        return
+        return"""
 
     for card in cards['cards']:
         data_card = card
