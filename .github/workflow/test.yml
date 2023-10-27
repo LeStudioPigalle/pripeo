@@ -1,0 +1,17 @@
+name: test
+on: push
+jobs:
+  execute_test:
+    name: Install project and run project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update
+        run: sudo apt update
+      - name: Install pip
+        run: sudo apt install python3-pip
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Execute tests
+        env:
+          DJANGO_SETTINGS_MODULE: pripeo_V_2_2.settings
+        run: python3 manage.py runserver
