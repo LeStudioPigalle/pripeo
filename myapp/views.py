@@ -88,9 +88,9 @@ def index(request):
     data_account = wallester.getAccountById(myuser.id_compte_wallester)
 
     try:
-        data_card_history = wallester.getCardHistory(data_card['id'],100)
+        data_account_statement = wallester.getStatementByAccount(myuser.id_compte_wallester,1000)
     except:
-        data_card_history = {}
+        data_account_statement = {}
 
     context = {}
     context['user'] = myuser
@@ -98,7 +98,7 @@ def index(request):
     try:
         context['card_account'] = str(data_account['account']['balance'])+" "+str(data_account['account']['currency_code'])
     except : pass
-    context['card_history'] = data_card_history
+    context['card_history'] = data_account_statement
 
     return render(request,'myapp/pages-starter.html',context)
 
