@@ -88,7 +88,7 @@ def index(request):
     data_account = wallester.getAccountById(myuser.id_compte_wallester)
 
     try:
-        data_account_statement = wallester.getStatementByCard(data_card['id'],1000)
+        data_account_statement = wallester.getStatementByAccount(myuser.id_compte_wallester,1000)
     except:
         data_account_statement = {}
 
