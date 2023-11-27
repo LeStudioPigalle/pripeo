@@ -209,7 +209,7 @@ def getStatementByAccount(account_id, nb_record):
     dictReturn = {}
     index = 0
 
-    for transac in cards_response['transactions']:
+    for transac in cards_response['records']:
         dictReturn[index]=transac
         index+=1
 
