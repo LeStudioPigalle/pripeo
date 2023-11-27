@@ -88,7 +88,7 @@ def index(request):
     data_account = wallester.getAccountById(myuser.id_compte_wallester)
 
     try:
-        data_card_history = wallester.getCardHistory(myuser.id_compte_wallester,100)
+        data_card_history = wallester.getCardHistory(data_card['id'],100)
     except:
         data_card_history = {}
 

@@ -181,10 +181,10 @@ def downloadStatementById(account_id, from_date, to_date, statement_file_type):
     return response.json()
 
 
-def getCardHistory(id_compte_wallester, nb_record):
+def getCardHistory(card_id, nb_record):
     token = getToken()
 
-    url = f"https://api-frontend.wallester.com/v1/accounts/{id_compte_wallester}/transactions"
+    url = f"https://api-frontend.wallester.com/v1/cards/{card_id}/transactions"
 
     querystring = {"from_record": "0", "records_count": str(nb_record)}
 
