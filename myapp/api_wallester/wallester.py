@@ -181,10 +181,10 @@ def downloadStatementById(account_id, from_date, to_date, statement_file_type):
     return response.json()
 
 
-def getStatementByAccount(account_id, nb_record):
+def getStatementByCard(card_id, nb_record):
     token = getToken()
 
-    url = f"https://api-frontend.wallester.com/v1/accounts/{account_id}/statement"
+    url = f"https://api-frontend.wallester.com/v1/cards/{card_id}/statement"
 
     querystring = {"from_record": "0", "records_count": str(nb_record), "exclude_cleared_authorizations": True, "exclude_declined_authorizations": False, "exclude_reversed_authorizations": False, "include_account_adjustments": True, "include_authorizations": True, "include_fees": True, "include_transactions": True}
 
