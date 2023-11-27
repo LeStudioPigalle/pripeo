@@ -217,6 +217,9 @@ def getStatementByCard(card_id, nb_record):
         value['purchase_date'] = value['purchase_date'].replace("T", " ").replace("Z", "")
         value['purchase_date'] = datetime.strptime(value['purchase_date'], '%Y-%m-%d %H:%M:%S').strftime('%d/%m/%Y')
 
+        if value['merchant_name'] == "BENJAMINA TAHIRIHANITRA" or value['merchant_name'] == "M. TAHIRIHANITRA BENJAMINA" or value['merchant_name'] == "TAHIRIHANITRA SANTATRA BENJAMINA" or value['merchant_name'] == "Wallester":
+            value['merchant_name'] = "PRIPEO"
+
     return dictReturn
 
 
