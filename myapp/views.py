@@ -96,7 +96,7 @@ def index(request):
     context['user'] = myuser
     context['card'] = data_card
     try:
-        context['card_account'] = str(data_account['account']['balance'])+" "+str(data_account['account']['currency_code'])
+        context['card_account'] = str(data_account['account']['available_amount'])+" "+str(data_account['account']['currency_code'])
     except : pass
     context['card_history'] = data_account_statement
 
