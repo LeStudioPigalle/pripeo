@@ -9,6 +9,8 @@ Pripeo est une plateforme qui permet de commander une carte virtuel ou physique.
 - [Django](https://docs.djangoproject.com/en/4.2): Un framework web Python puissant pour assurer le site web.
 - [gunicorn](https://docs.gunicorn.org/en/stable/index.html): Librairie pour le déploiement d'applications web Python en production (serveur HTTP WSGI).
 - [request](https://pypi.org/project/requests/): Librairie pour les requêtes HTTTP
+- [PyJWT](https://pyjwt.readthedocs.io/en/stable/): Librairie pour créer des token JWT
+- [cryptography](https://cryptography.io/en/latest/): Librairie d'algorithme de cryptographie
 
 ## Service externe 
 
@@ -19,8 +21,8 @@ Pripeo est une plateforme qui permet de commander une carte virtuel ou physique.
 1. Clonez le dépôt :
 
 ```sh
-git clone https://github.com/<votreutilisateur>/saiyo.git
-cd votreprrojet
+git clone https://github.com/<votreutilisateur>/pripeo.git
+cd pripeo
 ```
 
 2. Créez un environnement virtuel et installez les dépendances : 
