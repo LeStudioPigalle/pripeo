@@ -3,7 +3,7 @@ test.py
 
 conf/
 files/
-/static/
+/static
 db.sqlite3
 
 # Byte-compiled / optimized / DLL files
